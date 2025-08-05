@@ -1,0 +1,52 @@
+PAAS_PLATFORM: "KUBERNETES"
+ATP_NET: ""
+ATP_HTTP_LOGGING: "true"
+ATP_HTTP_LOGGING_HEADERS: "true"
+ATP_HTTP_LOGGING_HEADERS_IGNORE: ""
+ATP_HTTP_LOGGING_URI_IGNORE: "/liveness|/readiness"
+# CPU core limit
+CPU_LIMIT: "0.3"
+# CPU core request
+CPU_REQUEST: "0.05"
+# Which docker image should be used to deploy
+DOCKER_TAG: "artifactory-service-address/path-to-image"
+# Memory limit
+MEMORY_LIMIT: "1Gi"
+# Memory request
+MEMORY_REQUEST: "256Mi"
+#Replicas count.
+NODES_COUNT: "1"
+# Security Context properties
+# enabled is a flag to enable Security Context
+SECURITY_CONTEXT_ENABLED: false
+# runAsUser is the user ID used to run the container
+podSecurityContext:
+  runAsUser: 1000
+  fsGroup: 1000
+containerSecurityContext: {}
+# Deployment Config/Service name.
+SERVICE_NAME: "atp-itf-lite-script-engine"
+TERMINATION_POLICY: "Redirect"
+#supported values ClusterIP, ExternalName, LoadBalancer, NodePort
+SERVICE_PORT_TYPE: "NodePort"
+NODE_OPTIONS: ''
+# max request body size = ATP_ITF_LITE_HTTP_REQUEST_SIZE_MB + ATP_ITF_LITE_HTTP_RESPONSE_SIZE_MB
+ATP_ITF_LITE_HTTP_REQUEST_SIZE_MB: '100'
+ATP_ITF_LITE_HTTP_RESPONSE_SIZE_MB: '100'
+# Connection timeout
+ATP_ITF_LITE_CONNECTION_TIMEOUT: '60000'
+# Set to ATP2 to enable Prometheus scrapping
+SERVICE_TYPE: "ATP2"
+# Monitor metrics enabled
+MONITORING_ENABLED: true
+MONITORING_PORT: '8090'
+# Logging level
+LOG_LEVEL: "INFO"
+# Host of graylog
+GRAYLOG_HOST: "tcp:graylog.somedomain.com"
+# This option turns on or off logging in graylog
+GRAYLOG_ON: true
+# Port of graylog
+GRAYLOG_PORT: 12201
+
+nodeSelector: {}
